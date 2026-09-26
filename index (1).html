@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayesha Begum | AI & ML Student</title>
+<meta name="description" content="Ayesha Begum | AI & ML Student Portfolio">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b0f19;
+    color:#f5f7fb;
+    line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1100px;margin:auto}
+nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(11,15,25,.95);
+    border-bottom:1px solid #222a3a;
+}
+.navbar{
+    height:70px;display:flex;align-items:center;
+    justify-content:space-between;
+}
+.logo{font-size:22px;font-weight:700}
+.logo span{color:#7c5cff}
+.nav-links{display:flex;gap:25px}
+.nav-links a{color:#b9c1d1;font-size:14px}
+.nav-links a:hover{color:#fff}
+section{padding:80px 0}
+.hero{min-height:88vh;display:flex;align-items:center}
+.hero-content{max-width:760px}
+.hero h1{font-size:clamp(42px,7vw,70px);line-height:1.05;margin:20px 0 12px}
+.hero h1 span{color:#8b7cff}
+.hero h2{font-size:25px;margin-bottom:18px;color:#dce3f4}
+.hero p,.about p,.project p{color:#aeb8ca}
+.buttons{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.btn{
+    padding:12px 20px;border-radius:8px;
+    border:1px solid #30394d;font-weight:600;
+}
+.btn.primary{background:#7357ff;border-color:#7357ff}
+.btn.secondary{background:transparent}
+.section-title{font-size:34px;margin-bottom:8px}
+.section-sub{color:#9fa9bc;margin-bottom:32px}
+.about-box,.education-card,.certificate,.contact-box,.project{
+    background:#111827;
+    border:1px solid #242d3e;
+    border-radius:14px;
+    padding:25px;
+}
+.about-box p{margin-bottom:14px}
+.skills{display:flex;flex-wrap:wrap;gap:12px}
+.skill{
+    padding:9px 14px;background:#151e2d;
+    border:1px solid #2a3448;border-radius:8px;color:#dce3f2
+}
+.projects{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px
+}
+.project h3{font-size:21px;margin-bottom:10px}
+.project p{margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{
+    font-size:12px;padding:5px 9px;border-radius:20px;
+    background:#182334;color:#b8c7ff
+}
+.project-link{
+    display:inline-block;margin-top:18px;
+    color:#9b8cff;font-weight:600
+}
+.education-card h3{font-size:22px;margin-bottom:5px}
+.education-card p{color:#aeb8ca;margin-top:4px}
+.certificates{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:18px
+}
+.certificate h3{margin-bottom:5px}
+.certificate p{color:#aeb8ca}
+.contact-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+.github-btn{
+    padding:12px 20px;background:#7357ff;
+    border-radius:8px;font-weight:700
+}
+footer{
+    border-top:1px solid #222a3a;
+    padding:25px 0;text-align:center;color:#8994a8
+}
+@media(max-width:800px){
+    .nav-links{display:none}
+    .projects,.certificates{grid-template-columns:1fr}
+    .contact-box{flex-direction:column;align-items:flex-start}
+    section{padding:65px 0}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="container navbar">
+    <a href="#home" class="logo">Ayesha<span>.</span></a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div class="container">
+    <div class="hero-content">
+        <p style="color:#9b8cff;font-weight:600">B.Tech Student • Data & Technology Enthusiast</p>
+        <h1>Hello, I'm <span>Ayesha Begum</span></h1>
+        <h2>AI & Machine Learning Student</h2>
+        <p>
+            B.Tech student interested in data analysis, SQL, Python and practical
+            technology projects. I enjoy learning new technologies and building
+            useful solutions through hands-on projects and internship experience.
+        </p>
+        <div class="buttons">
+            <a href="#projects" class="btn primary">View My Projects</a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-sub">A little about my journey</p>
+    <div class="about-box">
+        <p>
+            I am a B.Tech student specializing in Artificial Intelligence and
+            Machine Learning. I enjoy learning new technologies and building
+            practical projects that solve real-world problems.
+        </p>
+        <p>
+            My current work includes data cleaning, exploratory data analysis,
+            SQL data analysis and internship projects. I am continuously
+            improving my technical skills through hands-on learning and projects.
+        </p>
+    </div>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-sub">Technologies I am learning and working with</p>
+    <div class="skills">
+        <span class="skill">Python</span>
+        <span class="skill">SQL</span>
+        <span class="skill">Data Analysis</span>
+        <span class="skill">Data Cleaning</span>
+        <span class="skill">Exploratory Data Analysis</span>
+        <span class="skill">AI & ML</span>
+        <span class="skill">Git & GitHub</span>
+    </div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Some of my academic and internship projects</p>
+
+    <div class="projects">
+
+        <div class="project">
+            <h3>Project 1 — Data Cleaning</h3>
+            <p>
+                Data cleaning project using an employee dataset, focused on
+                preparing and organizing data for further analysis.
+            </p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Data Cleaning</span>
+                <span class="tag">Data Analysis</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/ayeshajk05-arch/Project-1-Data-Cleaning"
+               target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project">
+            <h3>Project 2 — Exploratory Data Analysis</h3>
+            <p>
+                EDA project using an employee dataset to explore patterns,
+                relationships and useful insights from the data.
+            </p>
+            <div class="tags">
+                <span class="tag">EDA</span>
+                <span class="tag">Data Analysis</span>
+                <span class="tag">Employee Dataset</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/ayeshajk05-arch/Project-2-Exploratory-Data-Analysis"
+               target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project">
+            <h3>Project 3 — SQL Data Analysis</h3>
+            <p>
+                SQL data analysis project using an employee dataset to practice
+                querying data and extracting meaningful information.
+            </p>
+            <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">Data Analysis</span>
+                <span class="tag">Database</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/ayeshajk05-arch/Project-3-SQL-Data-Analysis"
+               target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project">
+            <h3>DecodeLabs Internship</h3>
+            <p>
+                Internship projects and learning tasks completed during the
+                DecodeLabs Internship.
+            </p>
+            <div class="tags">
+                <span class="tag">Internship</span>
+                <span class="tag">Projects</span>
+                <span class="tag">Learning</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/ayeshajk05-arch/DecodeLabs-Internship"
+               target="_blank">View on GitHub →</a>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<section id="education">
+<div class="container">
+    <h2 class="section-title">Education</h2>
+    <p class="section-sub">My academic background</p>
+
+    <div class="education-card">
+        <h3>B.Tech — Artificial Intelligence & Machine Learning</h3>
+        <p>St. Mary's Group of Institutions, Hyderabad</p>
+        <p>Bachelor of Technology</p>
+        <p>CGPA: 8.1</p>
+    </div>
+</div>
+</section>
+
+<section id="certificates">
+<div class="container">
+    <h2 class="section-title">Certificates</h2>
+    <p class="section-sub">Courses and certifications I have completed</p>
+
+    <div class="certificates">
+        <div class="certificate">
+            <h3>Python for Beginners</h3>
+            <p>Simplilearn</p>
+        </div>
+
+        <div class="certificate">
+            <h3>Databases for Developers Foundations</h3>
+            <p>Oracle Dev Gym</p>
+        </div>
+
+        <div class="certificate">
+            <h3>Cloud Computing Fundamentals</h3>
+            <p>IBM SkillsBuild</p>
+        </div>
+
+        <div class="certificate">
+            <h3>Generative AI</h3>
+            <p>IBM SkillsBuild</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">
+        I'm open to learning opportunities, internships and entry-level roles.
+    </p>
+
+    <div class="contact-box">
+        <div>
+            <strong>GitHub</strong>
+            <p style="color:#aeb8ca;margin-top:4px">
+                Explore my projects and work
+            </p>
+        </div>
+
+        <a class="github-btn"
+           href="https://github.com/ayeshajk05-arch"
+           target="_blank">
+           Visit My GitHub →
+        </a>
+    </div>
+</div>
+</section>
+
+<footer>
+    © 2026 Ayesha Begum. All Rights Reserved.
+</footer>
+
+</body>
+</html>
