@@ -1,341 +1,566 @@
-from pathlib import Path
-import zipfile
-
-out_dir = Path("/mnt/data/ayesha_final_portfolio")
-out_dir.mkdir(exist_ok=True)
-
-html = r"""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayesha Begum | AI & ML Student</title>
-<meta name="description" content="Ayesha Begum | AI & ML Student Portfolio">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#0b0f19;
-    color:#f5f7fb;
-    line-height:1.6;
-}
-a{text-decoration:none;color:inherit}
-.container{width:90%;max-width:1100px;margin:auto}
-nav{
-    position:sticky;top:0;z-index:100;
-    background:rgba(11,15,25,.95);
-    border-bottom:1px solid #222a3a;
-}
-.navbar{
-    height:70px;display:flex;align-items:center;
-    justify-content:space-between;
-}
-.logo{font-size:22px;font-weight:700}
-.logo span{color:#7c5cff}
-.nav-links{display:flex;gap:25px}
-.nav-links a{color:#b9c1d1;font-size:14px}
-.nav-links a:hover{color:#fff}
-section{padding:80px 0}
-.hero{min-height:88vh;display:flex;align-items:center}
-.hero-content{max-width:760px}
-.hero h1{font-size:clamp(42px,7vw,70px);line-height:1.05;margin:20px 0 12px}
-.hero h1 span{color:#8b7cff}
-.hero h2{font-size:25px;margin-bottom:18px;color:#dce3f4}
-.hero p,.about p,.project p{color:#aeb8ca}
-.buttons{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
-.btn{
-    padding:12px 20px;border-radius:8px;
-    border:1px solid #30394d;font-weight:600;
-}
-.btn.primary{background:#7357ff;border-color:#7357ff}
-.btn.secondary{background:transparent}
-.section-title{font-size:34px;margin-bottom:8px}
-.section-sub{color:#9fa9bc;margin-bottom:32px}
-.about-box,.education-card,.certificate,.contact-box,.project{
-    background:#111827;
-    border:1px solid #242d3e;
-    border-radius:14px;
-    padding:25px;
-}
-.about-box p{margin-bottom:14px}
-.skills{display:flex;flex-wrap:wrap;gap:12px}
-.skill{
-    padding:9px 14px;background:#151e2d;
-    border:1px solid #2a3448;border-radius:8px;color:#dce3f2
-}
-.projects{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px
-}
-.project h3{font-size:21px;margin-bottom:10px}
-.project p{margin-bottom:16px}
-.tags{display:flex;flex-wrap:wrap;gap:7px}
-.tag{
-    font-size:12px;padding:5px 9px;border-radius:20px;
-    background:#182334;color:#b8c7ff
-}
-.project-link{
-    display:inline-block;margin-top:18px;
-    color:#9b8cff;font-weight:600
-}
-.education-card h3{font-size:22px;margin-bottom:5px}
-.education-card p{color:#aeb8ca;margin-top:4px}
-.certificates{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:18px
-}
-.certificate h3{margin-bottom:5px}
-.certificate p{color:#aeb8ca}
-.contact-box{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-.github-btn{
-    padding:12px 20px;background:#7357ff;
-    border-radius:8px;font-weight:700
-}
-footer{
-    border-top:1px solid #222a3a;
-    padding:25px 0;text-align:center;color:#8994a8
-}
-@media(max-width:800px){
-    .nav-links{display:none}
-    .projects,.certificates{grid-template-columns:1fr}
-    .contact-box{flex-direction:column;align-items:flex-start}
-    section{padding:65px 0}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sreenika Banda | AI & ML Student</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: #f8f9fc;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #4f46e5;
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #666;
+            font-size: 17px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .secondary {
+            border: 2px solid #4f46e5;
+            color: #4f46e5;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #222;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        .about {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #555;
+            font-size: 17px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .skill {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            font-weight: 500;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #4f46e5;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 15px;
+            margin-right: 5px;
+            padding: 5px 10px;
+            background: #eef2ff;
+            color: #4f46e5;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .education-container {
+            max-width: 850px;
+            margin: auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .education-card h3 {
+            color: #4f46e5;
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: #666;
+            margin: 4px 0;
+        }
+
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .certificate {
+            background: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+        }
+
+        .certificate h3 {
+            color: #4f46e5;
+            font-size: 18px;
+        }
+
+        .certificate p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        #contact {
+            text-align: center;
+            background: #eef2ff;
+        }
+
+        .contact-links {
+            margin-top: 25px;
+        }
+
+        .contact-links a {
+            margin: 8px;
+            text-decoration: none;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #111827;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-<div class="container navbar">
-    <a href="#home" class="logo">Ayesha<span>.</span></a>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#certificates">Certificates</a>
-        <a href="#contact">Contact</a>
-    </div>
-</div>
-</nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Sreenika Banda</div>
 
-<section class="hero" id="home">
-<div class="container">
-    <div class="hero-content">
-        <p style="color:#9b8cff;font-weight:600">B.Tech Student • Data & Technology Enthusiast</p>
-        <h1>Hello, I'm <span>Ayesha Begum</span></h1>
-        <h2>AI & Machine Learning Student</h2>
-        <p>
-            B.Tech student interested in data analysis, SQL, Python and practical
-            technology projects. I enjoy learning new technologies and building
-            useful solutions through hands-on projects and internship experience.
-        </p>
-        <div class="buttons">
-            <a href="#projects" class="btn primary">View My Projects</a>
-            <a href="#contact" class="btn secondary">Contact Me</a>
-        </div>
-    </div>
-</div>
-</section>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<section id="about">
-<div class="container">
-    <h2 class="section-title">About Me</h2>
-    <p class="section-sub">A little about my journey</p>
-    <div class="about-box">
-        <p>
-            I am a B.Tech student specializing in Artificial Intelligence and
-            Machine Learning. I enjoy learning new technologies and building
-            practical projects that solve real-world problems.
-        </p>
-        <p>
-            My current work includes data cleaning, exploratory data analysis,
-            SQL data analysis and internship projects. I am continuously
-            improving my technical skills through hands-on learning and projects.
-        </p>
-    </div>
-</div>
-</section>
 
-<section id="skills">
-<div class="container">
-    <h2 class="section-title">Skills</h2>
-    <p class="section-sub">Technologies I am learning and working with</p>
-    <div class="skills">
-        <span class="skill">Python</span>
-        <span class="skill">SQL</span>
-        <span class="skill">Data Analysis</span>
-        <span class="skill">Data Cleaning</span>
-        <span class="skill">Exploratory Data Analysis</span>
-        <span class="skill">AI & ML</span>
-        <span class="skill">Git & GitHub</span>
-    </div>
-</div>
-</section>
-
-<section id="projects">
-<div class="container">
-    <h2 class="section-title">Projects</h2>
-    <p class="section-sub">Some of my academic and internship projects</p>
-
-    <div class="projects">
-
-        <div class="project">
-            <h3>Project 1 — Data Cleaning</h3>
-            <p>
-                Data cleaning project using an employee dataset, focused on
-                preparing and organizing data for further analysis.
-            </p>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Data Cleaning</span>
-                <span class="tag">Data Analysis</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/ayeshajk05-arch/Project-1-Data-Cleaning"
-               target="_blank">View on GitHub →</a>
-        </div>
-
-        <div class="project">
-            <h3>Project 2 — Exploratory Data Analysis</h3>
-            <p>
-                EDA project using an employee dataset to explore patterns,
-                relationships and useful insights from the data.
-            </p>
-            <div class="tags">
-                <span class="tag">EDA</span>
-                <span class="tag">Data Analysis</span>
-                <span class="tag">Employee Dataset</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/ayeshajk05-arch/Project-2-Exploratory-Data-Analysis"
-               target="_blank">View on GitHub →</a>
-        </div>
-
-        <div class="project">
-            <h3>Project 3 — SQL Data Analysis</h3>
-            <p>
-                SQL data analysis project using an employee dataset to practice
-                querying data and extracting meaningful information.
-            </p>
-            <div class="tags">
-                <span class="tag">SQL</span>
-                <span class="tag">Data Analysis</span>
-                <span class="tag">Database</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/ayeshajk05-arch/Project-3-SQL-Data-Analysis"
-               target="_blank">View on GitHub →</a>
-        </div>
-
-        <div class="project">
-            <h3>DecodeLabs Internship</h3>
-            <p>
-                Internship projects and learning tasks completed during the
-                DecodeLabs Internship.
-            </p>
-            <div class="tags">
-                <span class="tag">Internship</span>
-                <span class="tag">Projects</span>
-                <span class="tag">Learning</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/ayeshajk05-arch/DecodeLabs-Internship"
-               target="_blank">View on GitHub →</a>
-        </div>
-
-    </div>
-</div>
-</section>
-
-<section id="education">
-<div class="container">
-    <h2 class="section-title">Education</h2>
-    <p class="section-sub">My academic background</p>
-
-    <div class="education-card">
-        <h3>B.Tech — Artificial Intelligence & Machine Learning</h3>
-        <p>St. Mary's Group of Institutions, Hyderabad</p>
-        <p>Bachelor of Technology</p>
-        <p>CGPA: 8.1</p>
-    </div>
-</div>
-</section>
-
-<section id="certificates">
-<div class="container">
-    <h2 class="section-title">Certificates</h2>
-    <p class="section-sub">Courses and certifications I have completed</p>
-
-    <div class="certificates">
-        <div class="certificate">
-            <h3>Python for Beginners</h3>
-            <p>Simplilearn</p>
-        </div>
-
-        <div class="certificate">
-            <h3>Databases for Developers Foundations</h3>
-            <p>Oracle Dev Gym</p>
-        </div>
-
-        <div class="certificate">
-            <h3>Cloud Computing Fundamentals</h3>
-            <p>IBM SkillsBuild</p>
-        </div>
-
-        <div class="certificate">
-            <h3>Generative AI</h3>
-            <p>IBM SkillsBuild</p>
-        </div>
-    </div>
-</div>
-</section>
-
-<section id="contact">
-<div class="container">
-    <h2 class="section-title">Let's Connect</h2>
-    <p class="section-sub">
-        I'm open to learning opportunities, internships and entry-level roles.
-    </p>
-
-    <div class="contact-box">
+    <!-- Hero Section -->
+    <section class="hero">
         <div>
-            <strong>GitHub</strong>
-            <p style="color:#aeb8ca;margin-top:4px">
-                Explore my projects and work
+            <h1>Hello, I'm <span>Sreenika Banda</span></h1>
+
+            <h2>AI & Machine Learning Student</h2>
+
+            <p>
+                Final-year B.Tech student specializing in Artificial Intelligence
+                and Machine Learning, with an interest in Python, Java, SQL,
+                Machine Learning and practical AI solutions.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">View My Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>A little about my journey</p>
+        </div>
+
+        <div class="about">
+            <p>
+                I am a final-year B.Tech student specializing in Artificial
+                Intelligence and Machine Learning. I enjoy learning new
+                technologies and building practical projects that solve
+                real-world problems.
+            </p>
+
+            <br>
+
+            <p>
+                My current interests include Artificial Intelligence,
+                Machine Learning, Generative AI, Full Stack Development
+                and intelligent applications. I am continuously improving
+                my technical and communication skills while preparing for
+                a career in the technology industry.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Skills</h2>
+            <p>Technologies I am learning and working with</p>
+        </div>
+
+        <div class="skills">
+            <div class="skill">Python</div>
+            <div class="skill">Java</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">SQL</div>
+            <div class="skill">MongoDB</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">Artificial Intelligence</div>
+            <div class="skill">Generative AI</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Git & GitHub</div>
+        </div>
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="section-title">
+            <h2>Projects</h2>
+            <p>Some of my academic and personal projects</p>
+        </div>
+
+        <div class="projects">
+
+            <div class="card">
+                <h3>AI Resume Analyzer</h3>
+
+                <p>
+                    A Python-based application that analyzes resumes against
+                    job descriptions using text extraction, TF-IDF and cosine
+                    similarity to provide matching insights and improvement
+                    suggestions.
+                </p>
+
+                <span class="tag">Python</span>
+                <span class="tag">NLP</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Streamlit</span>
+            </div>
+
+
+            <div class="card">
+                <h3>Sahayak AI</h3>
+
+                <p>
+                    An on-device multilingual AI assistant designed to support
+                    users in low-connectivity environments through local
+                    question answering, document-based Q&A and AI assistance.
+                </p>
+
+                <span class="tag">AI</span>
+                <span class="tag">LLM</span>
+                <span class="tag">RAG</span>
+                <span class="tag">Python</span>
+            </div>
+
+
+            <div class="card">
+                <h3>NagrikSeva</h3>
+
+                <p>
+                    A multilingual voice assistant designed to help users
+                    access government-related services through a simple
+                    conversational interface.
+                </p>
+
+                <span class="tag">AI</span>
+                <span class="tag">Voice Assistant</span>
+                <span class="tag">Testing</span>
+                <span class="tag">Multilingual</span>
+            </div>
+
+
+            <div class="card">
+                <h3>PDF & Word Converter</h3>
+
+                <p>
+                    A utility application for converting documents between
+                    PDF and Word formats with a simple and user-friendly
+                    workflow.
+                </p>
+
+                <span class="tag">Python</span>
+                <span class="tag">Document Processing</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Education -->
+    <section id="education">
+        <div class="section-title">
+            <h2>Education</h2>
+            <p>My academic background</p>
+        </div>
+
+        <div class="education-container">
+
+            <div class="education-card">
+                <h3>B.Tech — Artificial Intelligence & Machine Learning</h3>
+
+                <p><strong>St. Mary's Group of Institutions, Hyderabad</strong></p>
+
+                <p>Bachelor of Technology</p>
+
+                <p>CGPA: 8.1</p>
+            </div>
+
+
+            <div class="education-card">
+                <h3>Intermediate — MPC</h3>
+
+                <p><strong>Racharla Junior College</strong></p>
+
+                <p>2021 – 2023</p>
+
+                <p>Percentage: <strong>96%</strong></p>
+            </div>
+
+
+            <div class="education-card">
+                <h3>SSC</h3>
+
+                <p><strong>ZPHS, Mallareddypet</strong></p>
+
+                <p>2020 – 2021</p>
+
+                <p>CGPA: <strong>10</strong></p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Certifications -->
+    <section id="certificates">
+        <div class="section-title">
+            <h2>Certifications</h2>
+            <p>Courses and certifications I have completed</p>
+        </div>
+
+        <div class="certificates">
+
+            <div class="certificate">
+                <h3>Python for Beginners</h3>
+                <p>Simplilearn</p>
+            </div>
+
+            <div class="certificate">
+                <h3>Databases for Developers Foundations</h3>
+                <p>Oracle Dev Gym</p>
+            </div>
+
+            <div class="certificate">
+                <h3>Cloud Computing Fundamentals</h3>
+                <p>IBM SkillsBuild</p>
+            </div>
+
+            <div class="certificate">
+                <h3>Generative AI</h3>
+                <p>IBM SkillsBuild</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Let's Connect</h2>
+
+            <p>
+                I'm open to learning opportunities, internships and
+                entry-level roles.
             </p>
         </div>
 
-        <a class="github-btn"
-           href="https://github.com/ayeshajk05-arch"
-           target="_blank">
-           Visit My GitHub →
-        </a>
-    </div>
-</div>
-</section>
+        <div class="contact-links">
 
-<footer>
-    © 2026 Ayesha Begum. All Rights Reserved.
-</footer>
+            <a href="mailto:YOUR_EMAIL@gmail.com">
+                Email
+            </a>
+
+            <a href="https://www.linkedin.com/" target="_blank">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/sreenika94-ctrl" target="_blank">
+                GitHub
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Sreenika Banda. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
-"""
-
-html_path = out_dir / "index.html"
-html_path.write_text(html, encoding="utf-8")
-
-zip_path = Path("/mnt/data/ayesha-final-portfolio.zip")
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
-    z.write(html_path, arcname="index.html")
-
-print("Final Ayesha portfolio created.")
-print(f"HTML: {html_path}")
-print(f"ZIP: {zip_path}")
